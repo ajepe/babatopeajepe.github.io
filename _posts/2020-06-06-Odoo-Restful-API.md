@@ -15,6 +15,7 @@ How to request for access token
 
 An access token is a credential that can be used by an application to access an API or restricted information on a server, it is required in other to be able to perform any operations and this token once generated should alway be send a long side any subsequents request either through the headers information or as part of the requests body.
 
+```python 
 import requests, json
 
 headers = {
@@ -36,6 +37,8 @@ content = json.loads(req.content.decode('utf-8'))
 # or add the access token to the headers
 headers['access-token'] = content.get('access_token') 
 print(headers)
+```
+
 
 Deleting An Acccess Token
 
@@ -43,11 +46,15 @@ Some times, an access token might have been compromised, or there may be need to
 
 For any request to be approved after deleting the token, a new token need to be generated as described above.
 
+```python
 req = requests.delete('%s/api/auth/token'%base_url, data=data, headers=headers)
+```
 
 Search [GET] Read Request
 
 Takes a search domain, returns a recordset of matching records. Can return a subset of matching records (offset and limit parameters) and be ordered (order parameter).
+
+```python
 
     import requests
 
@@ -63,11 +70,13 @@ Takes a search domain, returns a recordset of matching records. Can return a sub
     response = requests.request("GET", url, data=payload, headers=headers)
 
     print(response.text)
+```
 
 Create [POST] Create Request
 
 Takes a dictionary of field values, or a list of such dictionaries, and returns a recordset containing the records created.
 
+```python
     import requests
 
     url = "http://localhost:8069/api/sale.order"
@@ -81,10 +90,13 @@ Takes a dictionary of field values, or a list of such dictionaries, and returns 
     response = requests.request("POST", url, data=payload, headers=headers)
 
     print(response.text)
+```
 
 PUT Request [Write]
 
 Takes a number of field values, writes them to all the records in its recordset. Does not return anything.
+
+```python
 
 p = requests.put('http://theninnercicle.com.ng/api/res.partner/68', headers=headers,
                  data=json.dumps({
@@ -101,3 +113,4 @@ Deletes the records of the current set.
 
 p = requests.delete('http://theninnercicle.com.ng/api/res.partner/68', headers=headers)
 print(p.content)
+```
