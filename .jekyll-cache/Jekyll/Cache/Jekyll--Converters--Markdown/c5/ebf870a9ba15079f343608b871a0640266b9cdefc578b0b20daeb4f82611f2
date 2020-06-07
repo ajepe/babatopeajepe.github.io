@@ -1,0 +1,22 @@
+I"	
+<div class="card categories">
+    <!-- top-category -->
+    <div class="card-header d-flex justify-content-between hide-border-bottom" id="h_Blogging">
+      <span>
+      
+        <i class="far fa-folder-open fa-fw"></i>
+      
+        <a href="/categories/blogging/" class="ml-1 mr-2">Blogging</a>
+        <!-- content count -->
+        
+        <span class="text-muted small font-weight-light">
+        
+          2
+          categories,
+        
+          4
+          posts
+        </span>
+      </span>
+</div></div>
+:ET
