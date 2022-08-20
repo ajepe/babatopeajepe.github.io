@@ -1,25 +1,64 @@
 ---
-layout: page
-# The Category layout
-# v2.0
-# https://github.com/cotes2020/jekyll-theme-chirpy
-# MIT Licensed
+layout: default
 ---
+{% include header.html %}
 
-<div id="page-category">
-  <h1 class="pl-lg-2">
-    <i class="far fa-folder-open fa-fw text-muted"></i>
-    {{ page.title }}
-    <span class="lead text-muted pl-2">{{ site.categories[page.category] | size }}</span>
-  </h1>
+{% assign page_category = site.data.category_list[page.category] %}
 
-  <ul class="post-content pl-0">
-    {% for post in site.categories[page.category] %}
-    <li class="d-flex justify-content-between pl-md-3 pr-md-3">
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      <span class="dash flex-grow-1"></span>
-      <span class="text-muted small">{{ post.date | date: site.data.date_format.post }}</span>
-    </li>
-    {% endfor %}
-  </ul>
+{% assign page_subcategory = site.data.subcategory_list[page.subcategory] %}
+
+<div class="container-full">
+  <div class="container grid-xl">
+    <div class="mt-12 show-md"></div>
+    <div class="mt-8"></div>
+    <div class="columns negative-m-xl">
+      <div class="column col-12">
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{{ site.url }}{{ site.baseurl }}">Help Center Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="#">{{ page_category.name }}</a>
+          </li>
+        </ul>
+        <h2 class="text-light text-bold">{{ page_category.name }}</h2>
+        <p class="text-light mb-2">{{ page_category.description }}</p>
+      </div>
+      {% if page.has-subcategories == true %}
+        {% for subcategory in site.data.subcategory_list %}
+        {% capture subcategory_name %}{{ subcategory | first }}{% endcapture %}
+        {% assign page_subcategory = site.data.subcategory_list[subcategory_name] %}
+          {% if page_subcategory.parent-category == page.category %}
+          <div class="column col-4 col-md-6 col-sm-12">
+            <a href="{{ site.baseurl }}/{{ subcategory_name }}">
+              <div class="card card-link">
+                <div class="card-body text-center my-4">
+                  <h5 class="text-bold">{{ page_subcategory.name }}</h5>
+                      
+                  {% if subcategory[1].size == 1 %}
+                  <p class="m-0">{{ category | last | size }} article</p>
+                  {% else %}
+                  <p class="m-0">{{ category | last | size }} articles</p>
+                  {% endif %}
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endif %}
+        {% endfor %} 
+      {% else %}
+        {% for post in site.categories.[page.category] %}
+          {% include article-card.html %}
+        {% endfor %}
+      {% endif %}
+
+
+
+
+      {% include more-help.html %}
+    </div>
+  </div>
 </div>
+
+
+

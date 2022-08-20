@@ -1,147 +1,63 @@
 ---
 layout: default
-# The posts' layout
-# v2.0
-# https://github.com/cotes2020/jekyll-theme-chirpy
-# © 2017-2019 Cotes Chung
-# MIT Licensed
 ---
 
-<div class="row">
+{% include header.html %}
 
-  <div id="post-wrapper" class="col-12 col-lg-11 col-xl-8">
+{% assign page_category = site.data.category_list[page.category] %}
 
-    <div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
 
-      <h1 data-toc-skip>{{ page.title }}</h1>
-
-      <div class="post-meta text-muted d-flex flex-column">
-        <!-- Published date and author -->
-        <div>
-          Posted
-          <span class="timeago" data-toggle="tooltip" data-placement="bottom"
-           title="{{ page.date | date: site.data.date_format.tooltip }}">
-            {{ page.date | date: site.data.date_format.post }}
-            <i class="unloaded">{{ page.date | date_to_xmlschema }}</i>
-          </span>
-          by
-          <span class="author">
-          {% if page.author %}
-            {{ page.author }}
-          {% else%}
-            {{ site.author }}
-          {% endif %}
-          </span>
+<div class="container-full">
+    <div class="container grid-xl">
+      <div class="mt-12 show-md"></div>
+      <div class="mt-8"></div>
+      <div class="columns negative-m-xl">
+        <div class="column col-12">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="{{ site.url }}{{ site.baseurl }}">Help Center Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="../{{ page.category }}">{{ page_category.name }}</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a href="#">{{ page.title }}</a>
+            </li>
+          </ul>
+          <h2 class="text-light text-bold">{{ page.title }}</h2>
+          <p class="text-light mb-0">{{ page.short-description }}</p>
         </div>
+        <div class="column col-12">
+          <div class="card">
+            <div class="card-body">
+                {% if site.use_authors == true %}
+                {% assign post_author = site.data.authors[page.author] %}
+                <div class="flex-vertical-center mb-4">
+                  <figure class="avatar d-inline-block" style="align-items: center;">
+                    <img  src="../assets/{{ post_author.image }}" alt="...">
+                  </figure>
+                  <div class="ml-2">
+                    <p class="text-dark text-small mb-0">Written by <span class="text-primary">{{ post_author.name }}</span></p>
+                    <p class="text-dark text-small text-italic mb-0">{% include reading-time.html %}</p>
+                  </div>
+                </div>
+                {% else %}
+                <div class="ml-2">
+                    <p class="m-0 text-small">Last updated:</p>
+                    <p class="text-dark text-small text-italic mb-0">{{ page.last_modified_at | date: '%B %d, %Y'  }} - {% include reading-time.html %}</p>
+                  </div>
+                {% endif %}
 
-        <!-- lastmod -->
-        {%- capture filename -%}
-          {{ page.url | split: "/" | last }}
-        {%- endcapture -%}
+              {{ content }}
 
-        {% assign record = site.data.updates | where: "filename", filename | first %}
+              
+            
 
-        {% if record %}
-        <div>
-          Updated
-          <span class="timeago lastmod"
-            data-toggle="tooltip" data-placement="bottom"
-             title="{{ record.lastmod | date: site.data.date_format.tooltip }}">
-            {{ record.lastmod | date: site.data.date_format.post }}
-            <i class="unloaded">{{ record.lastmod | date_to_xmlschema}}</i>
-          </span>
+
+            </div>
+          </div>
         </div>
-        {% endif %}
-
-        <!-- page views -->
-        {% if site.google_analytics.pv.enabled %}
-        <div>
-          <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin fa-fw"></i></span>
-          views
-        </div>
-        {% endif %}
-
-      </div> <!-- .post-meta -->
-
-      <div class="post-content">
-        {% if page.image %}
-          <img src="{{ page.image }}">
-        {% endif %}
-        <!-- Using lozad. See: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
-        {% if content contains '<img src=' %}
-          {{ content | replace: '<img src=', '<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src=' }}
-        {% else %}
-          {{ content }}
-        {% endif %}
+        {% include more-help.html %}
       </div>
-
-      <div class="post-tail-wrapper text-muted">
-
-        <!-- categories -->
-        {% if page.categories.size > 0 %}
-        <div class="post-meta mb-3">
-          <i class="far fa-folder-open fa-fw mr-1"></i>
-          {% for category in page.categories %}
-            <a href='{{ site.baseurl }}/categories/{{ category | replace: ' ', '-' | downcase | url_encode }}/'>{{ category }}</a>
-            {%- unless forloop.last -%}, {%- endunless -%}
-          {% endfor %}
-        </div>
-        {% endif %}
-
-        <!-- tags -->
-        {% if page.tags.size > 0 %}
-        <div class="post-tags">
-          <i class="fa fa-tags fa-fw mr-1"></i>
-          {% for tag in page.tags %}
-          <a href="{{ site.baseurl }}/tags/{{ tag | replace: ' ', '-' | downcase | url_encode }}/"
-            class="post-tag no-text-decoration" >
-            {{- tag -}}
-          </a>
-          {% endfor %}
-          </div>
-        {% endif %}
-
-        <div class="post-tail-bottom
-          d-flex justify-content-between align-items-center pt-5 pb-2">
-          {% if site.data.rights.license %}
-          <div class="license-wrapper">
-            This post is licensed under
-            <a href="{{ site.data.rights.license.link }}">{{ site.data.rights.license.name }}</a>
-            by the author.
-          </div>
-          {% endif %}
-
-          {% include post-sharing.html %}
-
-        </div><!-- .post-tail-bottom -->
-
-      </div><!-- div.post-tail -->
-
-    </div> <!-- .post -->
-
-  </div> <!-- #post-wrapper -->
-
-  {% include panel.html %}
-
-</div> <!-- .row -->
-
-<div class="row">
-  <div id="post-extend-wrapper" class="col-12 col-lg-11 col-xl-8">
-
-    <div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
-
-      {% include post-nav.html %}
-
-      {% if site.disqus.comments and page.comments %}
-        {% include disqus.html %}
-      {% endif %}
-
-      {% include related-posts.html %}
-
-    </div> <!-- .pl-1 pr-1 -->
-
-  </div> <!-- #post-extend-wrapper -->
-
-</div> <!-- .row -->
-
-{% include lozad.html %}
+    </div>
+  </div>
