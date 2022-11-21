@@ -3,7 +3,7 @@ logo_img: /assets/img/icons/golasblog_logo.svg
 favicon: /assets/favicon.ico
 description: description
 global_tags: jekyll theme simplex golasblog responsive html5
-copyright: © Golasowski 2021
+copyright: © Golasowski 2022
 
 sass:
     style: compressed
@@ -21,3 +21,5 @@ defaults:
       type: category
     values:
       layout: "category"
+
+theme: jekyll-theme-simplex
