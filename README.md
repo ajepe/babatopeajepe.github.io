@@ -1,155 +1,240 @@
-# [YAMT - Yet Another Minimal Theme](https://yamt.netlify.app/)
-![](https://badgen.net/rubygems/dt/jekyll-yamt)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/PandaSekh/Jekyll-YAMT/issues)
-![GitHub forks](https://img.shields.io/github/forks/PandaSekh/Jekyll-YAMT?label=Fork%20it%21&style=social)
-## [Live Demo](https://yamt.netlify.app/)
+[![Blog Demo](https://img.shields.io/badge/demo-golasblog-blue?style=flat-square)](https://golas.blog/)
+[![Generic Demo](https://img.shields.io/badge/demo-generic-green?style=flat-square)](https://simplex-demo.golas.systems/)
 
-![Homepage](https://raw.githubusercontent.com/PandaSekh/Jekyll-YAMT/master/assets/img/screenshots/Screenshot.png?raw=true)
+The source of the generic demo is available here: https://github.com/andreondra/simplex-demo
 
-YAMT is a minimal [Jekyll](http://jekyllrb.com) theme focused on simplicity and ease-of-use. It has great modularity, allowing you to easily decide what you actually want on your website.
+# <img src="assets/img/icons/simplex_logo.svg" alt="Simplex" height="50"/>
 
-## Contents
+A *simple* yet neat blogging theme. Developed for the [golas blog](https://golas.blog/) project.
 
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [Installation](#installation)
-- [Customize](#customize)
-  - [Basics](#basics)
-  - [Typography](#typography)
-  - [Header](#header)
-  - [Home](#home)
-  - [Post](#post)
-  - [Contact Form](#contact-form)
-- [Development](#development)
-- [Credits](#credits)
-- [License](#license)
 
-## Features
+## 👓 Preview
+![Preview](preview.gif)
 
-- Minimal and clean design.
-- Fully modular: activate and load only what you really need.
-- Works great on mobile and smaller screens.
-- Works on Github Pages.
-- Supports [Disqus](https://disqus.com/) comments activated only on button press, if you activate them.
-- [Google Analytics](https://www.google.com/analytics/) support.
-- [Open Graph](https://ogp.me/) and [Twitter Cards](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started) support to better index the website content on search engines and social networks.
-- [MathJAX](https://www.mathjax.org/) and [LaTeX](https://www.latex-project.org/) optional support. Write beautiful math!
-- [RSS](https://github.com/jekyll/jekyll-feed) support.
-- Beautiful [Syntax Highlight](https://yamt.netlify.app/2020/05/19/special-formatting.html#syntax-highlight). Write some code and show it in a graceful way.
+## 💎 Features
+### Responsive
+![Responsivity preview](previewResponsive.gif)
 
-## Screenshots
+### Dark mode
+![Dark mode preview](previewDark.gif)
 
-Mobile:  
-![Mobile](https://raw.githubusercontent.com/PandaSekh/Jekyll-YAMT/master/assets/img/screenshots/Screenshot_mobile.png?raw=true)
+### Buttons
+![Buttons preview](previewButtons.png)
 
-Code Highlight:  
-![Code](https://raw.githubusercontent.com/PandaSekh/Jekyll-YAMT/master/assets/img/screenshots/Screenshot_code_highlight.png)
+### Lity Lightbox 
+Supports images, videos, iFrames and more. See below for syntax.
 
-Minimal:  
-![Minimal](https://raw.githubusercontent.com/PandaSekh/Jekyll-YAMT/master/assets/img/screenshots/Screenshot_minimal.png?raw=true)
+### Open Graph tags
 
-## Installation
+## ℹ Installation
 
-There are four way to use YAMT: Netlify (suggested, as this theme has a contact module built-in working only on Netlify), Github Pages, as a gem-based theme, by forking this repo or by copying all the files into your directory.
+Add this line to your Jekyll site's `Gemfile`:
 
-### Download the files
-You can [download the files](https://github.com/PandaSekh/Jekyll-YAMT/releases/latest) and add them in your directory to start working.
+```ruby
+gem "jekyll-theme-simplex"
+```
 
-### Netlify
+And add this line to your Jekyll site's `_config.yml`:
 
-1. [Fork this repo](https://github.com/PandaSekh/Jekyll-YAMT/generate). You can copy only master, set it to private or public and name it however you want.
-2. Go to [Netlify](https://app.netlify.com/), create a New site from Git, choose your repo or all repos, no difference. Back to Netlify, select the recently forked repo.
-3. Owner and branch are good to go. In build command write `bundle exec jekyll build` and publishing directory should be `_site/`.
-4. Deploy. Your site will shortly be available. Under domain settings you can change your subdomain, or add a primary level one. 
+```yaml
+theme: jekyll-theme-simplex
+```
 
-### Github Pages
+And then execute:
 
-Github Pages uses the [--safe flag](https://jekyllrb.com/docs/configuration/options/) to build jekyll websites, which disable custom plugins, caching to disk and ignore symbolic links. Because of that, I suggest you to use any other method. Netlify works great with a 5 minute config, so I suggest you use it.
-
-1. [Fork this repo](https://github.com/PandaSekh/Jekyll-YAMT/generate).
-2. Create a new branch in your repo and call it `gh-pages`.
-3. Publish your website and choose gh-pages as the target branch.
-
-### Remote theme
-
-[Follow these instructions](https://help.github.com/en/github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-using-jekyll).
-
-### Gem-based theme 
-1. Add this line to your Jekyll site's `Gemfile`:
-
-    ```ruby
-    gem "jekyll-yamt"
-    ```
-
-2. And add this line to your Jekyll site's `_config.yml`:
-
-    ```yaml
-    theme: jekyll-yamt
-    ```
-
-3. And then execute:
-
-    ``` bash
     $ bundle
-    ```
 
-4. Or install it yourself as:
-    
-    ``` bash
-    $ gem install jekyll-yamt
-    ```
+Or install it yourself as:
 
-#### ERROR: There was an error while loading `jekyll-yamt.gemspec`: No such file or directory - git ls-files -z. Bundler cannot continue.
-If you encounter this error when running `bundle install`, please make sure git is installed.
+    $ gem install jekyll-theme-simplex
 
-## Customize
+## ✔ Usage
 
-YAMT is easily customizable. If you don't need a functionality, just deactivate it in `_data/settings.yml`.
-Most of the customizable things are self-explanatory and found in the `_data` folder and in the `_config.yml`.
+### ⚙ Setting up the template
+Add following to the `_config.yml`:
+```yaml
+logo_img: /assets/img/icons/golasblog_logo.svg #Absolute path to the logo. If not specified, the title will be displayed instead.
+copyright: © Golasowski 2020 #Your copyright.
 
-### Basics
+collections:
+    category:
+        output: true
+    authors:
+        output: false
 
-Under the `_data` folder there are three files: pages, settings and social.
-In pages you can add other pages that will show up in the nav-
-In social you can add your socials that will show up in the nav. To add a social, find a suitable icon on [FontAwesome](https://fontawesome.com/) and add it's name in the name tag.
-Brand defines Font Awesome's font type (fas is solid, fab is brand).
-Out of the box this theme has support colors for a bunch of social. If your social isn't supported, just add the color in the header.css 
+defaults:
+  -
+    scope:
+      path: ""
+      type: category
+    values:
+      layout: "category"
+```
 
-In `_data/settings.yml` you can activate or deactivate various functions of the theme, like analytics, disqus comments, related posts and so on.
+### ✨ Defining categories
+Create a `_category` folder in the root directory of the blog. Create a `.md` file for every category with the contents:
+```
+---
+category: [design] #Category ID.
+hue: var(--c-themeHueOrange) #Category hue. See note [1].
+title: Design #Category title.
+description: Lorem ipsum dolor sit amet.
+---
+```
 
-### Typography
-By default YAMT uses the System Font STack, which greatly reduces load times. If you want to use the old Font Stack, in `assets/main.scss` change `typography` to `typography-old`.
+### 🤵 Defining authors
+Create a `_authors` folder in the root directory. Create a `.md` file for every author with the contents:
+```
+---
+nick: golas #Author's nick.
+full_name: Andrew Golasowski #Author's full name.
+photo_dir: assets/img/authors/golas.png #Path to the author's pic.
+---
+```
 
-### Header
-In `_data/settings.yml` you can choose to hide or show the subtitle, the page navigation or the social icons.
+### 📰 Defining the menu
+Create a `_data` folder in the root directory. In the folder, create a `nav.yaml` file. Here's an example:
+```yaml
+- title: Programming #Menu item title.
+  url: category/programming.html #Menu item url.
+  icon: assets/img/icons/programming.svg #Menu item icon.
+  hue: "var(--c-themeHueRed)" #Menu item hue - see note [1].
+  subnav: #Subnav. See note [2].
+      - title: C++ #Submenu item title.
+        url: category/cpp.html #Submenu item url.
+        hue: "var(--c-themeHueOrange)" #Submenu item hue.
+        subnav: #Another subnav
+            - title: Libraries
+              url: libs.html
+              hue: "var(--c-themeHueBlue)"
+- title: Design
+  url: category/design.html
+  icon: assets/img/icons/design.svg
+  hue: "var(--c-themeHueRed)"
+```
+#### Pro tip:
+Use color icons with the same hue as the menu items. Icons will be black and on hover the color will be shown.
 
-### Home
-In `_data/settings.yml` you can choose to hide or show the posts infos (date and read-time) and the featured image.
+### ✒ Creating posts
+Posts are created in the `_posts` directory. Following front matter attributes are supported:
+```
+---
+layout: post #Do not change.
+category: [programming, testing] #One, more categories or no at all.
+title: "Lorem ipsum" #Article title.
+author: andy #Author's nick.
+nextPart: _posts/2021-01-30-example.md #Next part.
+prevPart: _posts/2021-01-30-example.md #Previous part.
+og_image: assets/example.png #Open Graph preview image.
+og_description: "Example description." #Open Graph description.
+fb_app_id: example
+---
+Your markdown content here.
+```
 
-### Post
-In `_data/settings.yml` you can choose to hide or show the post infos, categories, related posts and comments.
-Note that by removing categories the Categories Archives will no longer be reachable.
+### ⚡ Syntax highlighting
+The theme uses Pygments CSS created by [@richleland](https://github.com/richleland). If you want to modify the highlighting styles, just download different CSS or create your own - see [Jekyll docs](https://jekyllrb.com/docs/liquid/tags/#stylesheets-for-syntax-highlighting).
 
-### Contact Form
-YAMT has a built-in contact form builded using [Netlify](https://app.netlify.com/) free form functionality. To make it work you only need the line `data-netlify="true"` when declaring a form.  
-If you don't want to use Netlify, remove the line `data-netlify="true"`.
+Note - `@media` is used to manage different styles for light and dark web browser mode. See `_variables.scss` file for details.
 
-## Development
+### 📷 Inserting pictures
+Classic Markdown syntax is supported. However, to be able to use the lightbox feature, you have to use HTML syntax. Minimal example:
+```html
+<a href="/assets/example.jpg" data-lity>
+  <img src="/assets/example_thumbnail.jpg"/>
+</a>
+```
 
-[Contributions are welcomed and encouraged](https://github.com/PandaSekh/Jekyll-YAMT/issues).
+To provide image description use this syntax:
+```html
+<div class="sx-picture">
+  <a href="/assets/example.jpg" data-lity>
+    <img src="/assets/example_thumbnail.jpg"/>
+  </a>
+  <span class="sx-subtitle">My picture description.</span>
+</div>
+```
+
+**Do not forget the `data-lity` attribute.**
+
+#### ↔ Centering
+To center pictures, put the code inside a `div` with `sx-center` class like this:
+```html
+<div markdown=1 class="sx-center">
+  ![My picture](/assets/example.jpg)
+</div>
+```
+
+### 🔘 Buttons
+Buttons can be inserted with the following syntax. Just replace `theme` with `red`, `green`, `blue`, `orange`, `purple` or `brown`, specify the target link in `href` attribute and the icon in `src` attribute.
+```html
+<div class='sx-button'>
+  <a href='https://your.link.here.example.com/' class='sx-button__content theme'>
+    <img src='/assets/img/icons/example_icon.svg'/>#{text}
+  </a>
+</div>
+```
+
+Markdown attribute can be omitted if you don't use markdown inside the block (e.g. by using the lightbox syntax).
+
+### ℹ Notes
+[1] Hue can be either one of the predefined colors or any of the CSS `color` attribute supported values (hex, rgb...).
+
+[2] Submenus are generated recursively, so any menu (and submenu) can have its own submenu.
+
+#### Predefined colors
+You can use following predefined colors:
+```scss
+--c-themePrimaryLight: #EFEFEF;
+--c-themePrimaryDark:  #101010;
+--c-themeSecondaryLight: #DADADA;
+--c-themeSecondaryDark: #252525;
+--c-themeTerniaryLight: #AEAEAE;
+--c-themeTerniaryDark: #515151;
+--c-themeQuaternaryLight: #919191;
+--c-themeQuaternaryDark: #888888;
+
+--c-themeHueRed: #C02717;
+--c-themeHueGreen: #8EA604;
+--c-themeHueBlue: #2E86AB;
+--c-themeHueOrange: #E59500;
+--c-themeHuePurple: #9F00CE;
+--c-themeHueBrown: #230007;
+```
+These colors are CSS variables, usage: `var(--var-name)`
+
+## Add-ons
+Add-ons are distributed as Jekyll plugins. Just download any desired `.rb` file from the repository `_plugin` folder and put it in your `_plugin` folder.
+
+### Buttons (button.rb)
+Adds a tag to simplify insertion of buttons:
+```
+{% button red|https://www.example.com/|/assets/img/icons/cog.svg %}
+Download binary
+{% endbutton %}
+```
+
+## 🤝 Contributing
+ 
+Bug reports and pull requests are welcome on [GitHub](https://github.com/andreondra/jekyll-theme-simplex).
+
+## ⚙ Development
 
 To set up your environment to develop this theme, run `bundle install`.
 
 Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
+If you recieve an error stating, `"require': cannot load such file -- webrick (LoadError)'` Simply run `bundle add webrick` and this will install the dependencies for running the Jekyll and then you may repeat Step 2!
 
 When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
-To add a custom directory to your theme-gem, please edit the regexp in `yamt.gemspec` accordingly.
+To add a custom directory to your theme-gem, please edit the regexp in `jekyll-theme-simplex.gemspec` accordingly.
 
 ## Credits
-Theme designed and created by [Alessio Franceschi](https://github.com/PandaSekh/).
-Inspired by [Lagrange by LeNPaul](https://lenpaul.github.io/Lagrange/).  
-Also great help from [this blog](https://blog.webjeda.com/), I've used this even before I created this theme.  
-Images from [Unsplash](https://unsplash.com/).
+Includes icons by [uxwing](https://uxwing.com/).
 
-## License
-The theme is available as open source under the terms of the [MIT License](https://github.com/PandaSekh/Jekyll-YAMT/blob/master/LICENSE.txt).
+The lightbox feature is provided by [Lity](https://github.com/jsor/lity) licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+Uses [jQuery](https://github.com/jquery/jquery) JavaScript plugin licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+## ⚖ License
+© Ondrej Golasowski. The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
