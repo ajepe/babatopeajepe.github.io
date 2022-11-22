@@ -1,240 +1,150 @@
-[![Blog Demo](https://img.shields.io/badge/demo-golasblog-blue?style=flat-square)](https://golas.blog/)
-[![Generic Demo](https://img.shields.io/badge/demo-generic-green?style=flat-square)](https://simplex-demo.golas.systems/)
+# The Minimalist theme
 
-The source of the generic demo is available here: https://github.com/andreondra/simplex-demo
+*Minimalist is a Jekyll theme, inspired by the [Minimal](https://github.com/pages-themes/minimal) theme from GitHub. You can [preview the theme to see what it looks like](http://bdhu.github.io/minimalist), or even [use it today](#usage).*
 
-# <img src="assets/img/icons/simplex_logo.svg" alt="Simplex" height="50"/>
+![Demo of Minimalist](https://raw.githubusercontent.com/BDHU/minimalist/main/minimalist.png)
 
-A *simple* yet neat blogging theme. Developed for the [golas blog](https://golas.blog/) project.
+## Usage
 
+### Docker
 
-## 👓 Preview
-![Preview](preview.gif)
+The simplest way is to use a Docker container. For Docker installation instructions, please refer to the offical Docker [docs](https://docs.docker.com/engine/install/). After successful installation, simply execute:
 
-## 💎 Features
-### Responsive
-![Responsivity preview](previewResponsive.gif)
+```bash
+./deploy.sh
+```
 
-### Dark mode
-![Dark mode preview](previewDark.gif)
+### Other Methods
 
-### Buttons
-![Buttons preview](previewButtons.png)
+To use the Minimalist theme:
 
-### Lity Lightbox 
-Supports images, videos, iFrames and more. See below for syntax.
-
-### Open Graph tags
-
-## ℹ Installation
-
-Add this line to your Jekyll site's `Gemfile`:
+1. Add the following line to your Gemfile
 
 ```ruby
-gem "jekyll-theme-simplex"
+gem "jekyll-remote-theme"
 ```
 
-And add this line to your Jekyll site's `_config.yml`:
+then run `bundle install` to install the plugin.
 
-```yaml
-theme: jekyll-theme-simplex
+2. Add the following to your site's `_config.yml` to activate the plugin:
+
+```yml
+plugins:
+  - jekyll-remote-theme
 ```
 
-And then execute:
+Note: If you are using a Jekyll version less than 3.5.0, use the `gems` key instead of `plugins`.
 
-    $ bundle
+3. Add the following line to your `config.yml` to use the theme
 
-Or install it yourself as:
-
-    $ gem install jekyll-theme-simplex
-
-## ✔ Usage
-
-### ⚙ Setting up the template
-Add following to the `_config.yml`:
-```yaml
-logo_img: /assets/img/icons/golasblog_logo.svg #Absolute path to the logo. If not specified, the title will be displayed instead.
-copyright: © Golasowski 2020 #Your copyright.
-
-collections:
-    category:
-        output: true
-    authors:
-        output: false
-
-defaults:
-  -
-    scope:
-      path: ""
-      type: category
-    values:
-      layout: "category"
+```yml
+remote_theme: BDHU/minimalist
 ```
 
-### ✨ Defining categories
-Create a `_category` folder in the root directory of the blog. Create a `.md` file for every category with the contents:
-```
----
-category: [design] #Category ID.
-hue: var(--c-themeHueOrange) #Category hue. See note [1].
-title: Design #Category title.
-description: Lorem ipsum dolor sit amet.
----
-```
+then running `bundle exec jekyll serve` for local deployment. Here is a [demo](https://github.com/BDHU/bdhu.github.io) using this theme.
 
-### 🤵 Defining authors
-Create a `_authors` folder in the root directory. Create a `.md` file for every author with the contents:
-```
----
-nick: golas #Author's nick.
-full_name: Andrew Golasowski #Author's full name.
-photo_dir: assets/img/authors/golas.png #Path to the author's pic.
----
+An example `_config.yml` file can be found [here](https://github.com/BDHU/bdhu.github.io/blob/master/_config.yml). More info can be found at [Jekyll Remote Theme](https://github.com/benbalter/jekyll-remote-theme).
+
+## Customizing
+
+### Configuration variables
+
+Minimalist will respect the following variables, if set in your site's `_config.yml`:
+
+```yml
+title: [The title of your site]
+description: [A short description of your site's purpose]
 ```
 
-### 📰 Defining the menu
-Create a `_data` folder in the root directory. In the folder, create a `nav.yaml` file. Here's an example:
-```yaml
-- title: Programming #Menu item title.
-  url: category/programming.html #Menu item url.
-  icon: assets/img/icons/programming.svg #Menu item icon.
-  hue: "var(--c-themeHueRed)" #Menu item hue - see note [1].
-  subnav: #Subnav. See note [2].
-      - title: C++ #Submenu item title.
-        url: category/cpp.html #Submenu item url.
-        hue: "var(--c-themeHueOrange)" #Submenu item hue.
-        subnav: #Another subnav
-            - title: Libraries
-              url: libs.html
-              hue: "var(--c-themeHueBlue)"
-- title: Design
-  url: category/design.html
-  icon: assets/img/icons/design.svg
-  hue: "var(--c-themeHueRed)"
-```
-#### Pro tip:
-Use color icons with the same hue as the menu items. Icons will be black and on hover the color will be shown.
+Additionally, you may choose to set the following optional variables:
 
-### ✒ Creating posts
-Posts are created in the `_posts` directory. Following front matter attributes are supported:
-```
----
-layout: post #Do not change.
-category: [programming, testing] #One, more categories or no at all.
-title: "Lorem ipsum" #Article title.
-author: andy #Author's nick.
-nextPart: _posts/2021-01-30-example.md #Next part.
-prevPart: _posts/2021-01-30-example.md #Previous part.
-og_image: assets/example.png #Open Graph preview image.
-og_description: "Example description." #Open Graph description.
-fb_app_id: example
----
-Your markdown content here.
+```yml
+google_analytics: [Your Google Analytics tracking ID]
 ```
 
-### ⚡ Syntax highlighting
-The theme uses Pygments CSS created by [@richleland](https://github.com/richleland). If you want to modify the highlighting styles, just download different CSS or create your own - see [Jekyll docs](https://jekyllrb.com/docs/liquid/tags/#stylesheets-for-syntax-highlighting).
+Choose light, dark, or automatically adjusting theme based on system theme:
 
-Note - `@media` is used to manage different styles for light and dark web browser mode. See `_variables.scss` file for details.
-
-### 📷 Inserting pictures
-Classic Markdown syntax is supported. However, to be able to use the lightbox feature, you have to use HTML syntax. Minimal example:
-```html
-<a href="/assets/example.jpg" data-lity>
-  <img src="/assets/example_thumbnail.jpg"/>
-</a>
+```yml
+color-scheme: auto/light/dark
 ```
 
-To provide image description use this syntax:
-```html
-<div class="sx-picture">
-  <a href="/assets/example.jpg" data-lity>
-    <img src="/assets/example_thumbnail.jpg"/>
-  </a>
-  <span class="sx-subtitle">My picture description.</span>
-</div>
+Specify logo for the website:
+
+```yml
+logo: /assets/img/<logo_file>
 ```
 
-**Do not forget the `data-lity` attribute.**
+Enable favicon by putting a `favicon.ico` in the repo's root directory and add the following line in `config.yml`:
 
-#### ↔ Centering
-To center pictures, put the code inside a `div` with `sx-center` class like this:
-```html
-<div markdown=1 class="sx-center">
-  ![My picture](/assets/example.jpg)
-</div>
+```yml
+favicon: true
 ```
 
-### 🔘 Buttons
-Buttons can be inserted with the following syntax. Just replace `theme` with `red`, `green`, `blue`, `orange`, `purple` or `brown`, specify the target link in `href` attribute and the icon in `src` attribute.
-```html
-<div class='sx-button'>
-  <a href='https://your.link.here.example.com/' class='sx-button__content theme'>
-    <img src='/assets/img/icons/example_icon.svg'/>#{text}
-  </a>
-</div>
+### Customizing Sidebar
+
+You can define a list of platforms that are linked from the sidebar in `_config.yml`:
+
+```yml
+sidebar:
+  - name: Google Scholar
+    icon: <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" style="vertical-align:-0.125em;" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14a7 7 0 0 0 0-14z" fill="currentColor"/></svg>
+    link: https://scholar.google.com/citations?user=zR6afi8AAAAJ
+  - name: GitHub
+    icon: <i class="fa-brands fa-github"></i>
+    link: https://github.com/BDHU
+  - ...
 ```
 
-Markdown attribute can be omitted if you don't use markdown inside the block (e.g. by using the lightbox syntax).
+For further customization of the sidebar, go to [sidebar.html](https://github.com/BDHU/minimalist/blob/main/_includes/sidebar.html) in this repo and modify it however you like. The [link-mobile.html](https://github.com/BDHU/minimalist/blob/main/_includes/links-mobile.html) customizes the sidebar's look on mobile devices. This example uses fonts from [font awesome](https://fontawesome.com) and [Iconify](https://iconify.design/). Feel free to explore/find other sources.
 
-### ℹ Notes
-[1] Hue can be either one of the predefined colors or any of the CSS `color` attribute supported values (hex, rgb...).
+### Stylesheet
 
-[2] Submenus are generated recursively, so any menu (and submenu) can have its own submenu.
+If you'd like to add your own custom styles:
 
-#### Predefined colors
-You can use following predefined colors:
-```scss
---c-themePrimaryLight: #EFEFEF;
---c-themePrimaryDark:  #101010;
---c-themeSecondaryLight: #DADADA;
---c-themeSecondaryDark: #252525;
---c-themeTerniaryLight: #AEAEAE;
---c-themeTerniaryDark: #515151;
---c-themeQuaternaryLight: #919191;
---c-themeQuaternaryDark: #888888;
+1. Create a file called `/assets/css/style.scss` in your site
+2. Add the following content to the top of the file, exactly as shown:
 
---c-themeHueRed: #C02717;
---c-themeHueGreen: #8EA604;
---c-themeHueBlue: #2E86AB;
---c-themeHueOrange: #E59500;
---c-themeHuePurple: #9F00CE;
---c-themeHueBrown: #230007;
-```
-These colors are CSS variables, usage: `var(--var-name)`
+    ```scss
+    ---
+    ---
 
-## Add-ons
-Add-ons are distributed as Jekyll plugins. Just download any desired `.rb` file from the repository `_plugin` folder and put it in your `_plugin` folder.
+    @import "{{ site.theme }}";
+    ```
 
-### Buttons (button.rb)
-Adds a tag to simplify insertion of buttons:
-```
-{% button red|https://www.example.com/|/assets/img/icons/cog.svg %}
-Download binary
-{% endbutton %}
-```
+3. Add any custom CSS (or Sass, including imports) you'd like immediately after the `@import` line
 
-## 🤝 Contributing
- 
-Bug reports and pull requests are welcome on [GitHub](https://github.com/andreondra/jekyll-theme-simplex).
+*Note: If you'd like to change the theme's Sass variables, you must set new values before the `@import` line in your stylesheet.*
 
-## ⚙ Development
+### Layouts
 
-To set up your environment to develop this theme, run `bundle install`.
+If you'd like to change the theme's HTML layout:
 
-Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
-If you recieve an error stating, `"require': cannot load such file -- webrick (LoadError)'` Simply run `bundle add webrick` and this will install the dependencies for running the Jekyll and then you may repeat Step 2!
+1. For some changes such as a custom `favicon`, you can add custom files in your local `_includes` folder. The files [provided with the theme](https://github.com/BDHU/minimalist/tree/master/_includes) provide a starting point and are included by the [original layout template](https://github.com/BDHU/minimalist/blob/master/_layouts/default.html).
+2. For more extensive changes, [copy the original template](https://github.com/BDHU/minimalist/blob/master/_layouts/default.html) from the theme's repository<br/>(*Pro-tip: click "raw" to make copying easier*)
+3. Create a file called `/_layouts/default.html` in your site
+4. Paste the default layout content copied in the first step
+5. Customize the layout as you'd like
 
-When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
-To add a custom directory to your theme-gem, please edit the regexp in `jekyll-theme-simplex.gemspec` accordingly.
+For example, this [repository](https://github.com/BDHU/bdhu.github.io) shows how customizations are made on the original theme.
 
-## Credits
-Includes icons by [uxwing](https://uxwing.com/).
+### Customizing Google Analytics code
 
-The lightbox feature is provided by [Lity](https://github.com/jsor/lity) licensed under the [MIT License](https://opensource.org/licenses/MIT).
+Google has released several iterations to their Google Analytics code over the years since this theme was first created. If you would like to take advantage of the latest code, paste it into `_includes/head-custom-google-analytics.html` in your Jekyll site.
 
-Uses [jQuery](https://github.com/jquery/jquery) JavaScript plugin licensed under the [MIT License](https://opensource.org/licenses/MIT).
+## Previewing the theme locally
 
-## ⚖ License
-© Ondrej Golasowski. The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+If you'd like to preview the theme locally (for example, in the process of proposing a change):
 
+1. Clone down the theme's repository (`git clone https://github.com/BDHU/minimalist`)
+2. `cd` into the theme's directory
+3. Run `script/bootstrap` to install the necessary dependencies
+4. Run `bundle exec jekyll serve` to start the preview server
+5. Visit [`localhost:4000`](http://localhost:4000) in your browser to preview the theme
+
+## Running tests
+
+The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run `script/cibuild`. You'll need to run `script/bootstrap` once before the test script will work.
+
+## Contributors
+
+Special thanks to [@godalming123](https://github.com/godalming123) for adding dark mode support. Also thank [@solvaholic](https://github.com/solvaholic), [@tildehacker](https://github.com/tildehacker), and other contributors for making multiple bug fixes and improvements. All contributions are welcome.
