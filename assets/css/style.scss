@@ -4,10 +4,9 @@
 @import "jekyll-theme-minimalist";
 
 .img-circle {
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px; 
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    background-color: #0077b3;
+    border: 2px outset;
 }
 
 .overlay {

@@ -5,7 +5,7 @@
 body {
   background-color: var(--clr-bg);
   padding:50px;
-  font: 18px/2 "Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 18px/1.8 "Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: var(--clr-text);
   font-weight:400;
 }
@@ -139,7 +139,7 @@ kbd {
 }
 
 .sidebar {
-  width:213px;
+  width:260px;
   float:left;
   position:fixed;
   -webkit-font-smoothing:subpixel-antialiased;
