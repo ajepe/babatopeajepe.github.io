@@ -1,66 +1,71 @@
-{% case site.color-scheme %}
-  {% when "", nil, false, 0, empty %}
-    {% assign ColorScheme = "auto" %}
-  {% else %}
-    {% assign ColorScheme = site.color-scheme %}
-{% endcase %}
+---
+layout: compress
+# Default layout
+---
 
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% seo %}
-    <link rel="stylesheet" href="{{ "/assets/css/colors-ColorScheme.css?v=" | replace: "ColorScheme", ColorScheme | append: site.github.build_revision | relative_url }}">
-    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+{% include assets-origin.html %}
 
-    <link rel="preload" href="{{site.logo | relative_url}}" as="image">
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
-    {% include head-custom.html %}
-  </head>
-  <body>
-    <div class="wrapper">
-      <div class="sidebar">
-        <header>
-          {% if site.logo %}
-            <img class="img-circle" src="{{site.logo | relative_url}}" alt="Logo">
-          {% endif %}
+{% capture prefer_mode %}
+  {% if site.theme_mode %}
+    data-mode="{{ site.theme_mode }}"
+  {% endif %}
+{% endcapture %}
 
-          {% if site.blank_title %}
-            <h1>{{ site.title | default: site.github.repository_name }}</h1>
-          {% else %}
-            <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
-          {% endif %}
+<!-- `site.alt_lang` can specify a language different from the UI -->
+<html lang="{{ site.alt_lang | default: site.lang }}"{{ prefer_mode }}>
 
-          {% if site.email %}
-            <p class="addr"><i class="fa-regular fa-envelope"></i>&nbsp;{{ site.email }}</p>
-          {% endif %}
+  {% include head.html %}
 
-          <p>{{ site.description | default: site.github.project_tagline }}</p>
+  <body data-spy="scroll" data-target="#toc" data-topbar-visible="true">
 
-          {% include sidebar.html %}
+    {% include sidebar.html %}
 
-        </header>
+    {% include topbar.html %}
 
-        {% include links-mobile.html %}
+    <div id="main-wrapper" class="d-flex justify-content-center">
+      <div id="main" class="container pl-xl-4 pr-xl-4">
+        {{ content }}
+      </div>
 
-        <div class="sidebar-footer">
-          {%- include footer.html -%}
+      {% include search-results.html %}
+
+    </div> <!-- #main-wrapper -->
+
+    {% include footer.html %}
+
+    {% if page.mermaid %}
+      {% include mermaid.html %}
+    {% endif %}
+
+    <div id="mask"></div>
+
+    <a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    {% if site.pwa.enabled %}
+      <div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true"
+        data-animation="true" data-autohide="false">
+        <div class="toast-header">
+          <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="toast-body text-center pt-0">
+          <p class="pl-2 pr-2 mb-3">{{ site.data.locales[site.lang].notification.update_found }}</p>
+          <button type="button" class="btn btn-primary" aria-label="Update">
+            {{ site.data.locales[site.lang].notification.update }}
+          </button>
         </div>
       </div>
-      <section>
+    {% endif %}
 
-      {{ content }}
+    {% include search-loader.html %}
 
-      </section>
-      <footer>
-        {%- include footer.html -%}
-      </footer>
-    </div>
-    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    {% include js-selector.html %}
+
   </body>
+
 </html>

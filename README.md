@@ -1,150 +1,106 @@
-# The Minimalist theme
+<div align="center">
 
-*Minimalist is a Jekyll theme, inspired by the [Minimal](https://github.com/pages-themes/minimal) theme from GitHub. You can [preview the theme to see what it looks like](http://bdhu.github.io/minimalist), or even [use it today](#usage).*
+  # Chirpy Jekyll Theme
 
-![Demo of Minimalist](https://raw.githubusercontent.com/BDHU/minimalist/main/minimalist.png)
+  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
 
-## Usage
+  [![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy?color=brightgreen)](https://rubygems.org/gems/jekyll-theme-chirpy)
+  [![CI](https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml/badge.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/actions/workflows/ci.yml)
+  [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4e556876a3c54d5e8f2d2857c4f43894)](https://www.codacy.com/gh/cotes2020/jekyll-theme-chirpy/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cotes2020/jekyll-theme-chirpy&amp;utm_campaign=Badge_Grade)
+  [![GitHub license](https://img.shields.io/github/license/cotes2020/jekyll-theme-chirpy.svg)](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE)
+  [![996.icu](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg)](https://996.icu)
 
-### Docker
+  [**Live Demo →**](https://cotes2020.github.io/chirpy-demo)
 
-The simplest way is to use a Docker container. For Docker installation instructions, please refer to the offical Docker [docs](https://docs.docker.com/engine/install/). After successful installation, simply execute:
+  [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)](https://cotes2020.github.io/chirpy-demo)
 
-```bash
-./deploy.sh
+</div>
+
+## Features
+
+- Dark/Light Theme Mode
+- Localized UI language
+- Pinned Posts
+- Hierarchical Categories
+- Trending Tags
+- Table of Contents
+- Last Modified Date of Posts
+- Syntax Highlighting
+- Mathematical Expressions
+- Mermaid Diagram & Flowchart
+- Dark/Light Mode Images
+- Embed Videos
+- Disqus/Utterances/Giscus Comments
+- Search
+- Atom Feeds
+- Google Analytics
+- Page Views Reporting
+- SEO & Performance Optimization
+
+## Quick Start
+
+Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of the basic environment. [Git](https://git-scm.com/) also needs to be installed.
+
+### Step 1. Creating a New Site
+
+Sign in to GitHub and browse to [**Chirpy Starter**](https://github.com/cotes2020/chirpy-starter/), click the button <kbd>Use this template</kbd> > <kbd>Create a new repository</kbd>, and name the new repository `USERNAME.github.io`, where `USERNAME` represents your GitHub username.
+
+### Step 2. Installing Dependencies
+
+Clone it to your local machine, go to its root directory, and run the following command to install the dependencies. 
+
+```console
+$ bundle
 ```
 
-### Other Methods
+### Step 3. Running Local Server
 
-To use the Minimalist theme:
+Run the following command in the root directory of your site:
 
-1. Add the following line to your Gemfile
-
-```ruby
-gem "jekyll-remote-theme"
+```console
+$ bundle exec jekyll s
 ```
 
-then run `bundle install` to install the plugin.
+Or run with Docker:
 
-2. Add the following to your site's `_config.yml` to activate the plugin:
-
-```yml
-plugins:
-  - jekyll-remote-theme
+```console
+$ docker run -it --rm \
+    --volume="$PWD:/srv/jekyll" \
+    -p 4000:4000 jekyll/jekyll \
+    jekyll serve
 ```
 
-Note: If you are using a Jekyll version less than 3.5.0, use the `gems` key instead of `plugins`.
+After a few seconds, the local service will be published at _<http://127.0.0.1:4000>_.
 
-3. Add the following line to your `config.yml` to use the theme
+## Documentation
 
-```yml
-remote_theme: BDHU/minimalist
-```
+For more details on usage, please refer to the tutorial on the [demo website](https://cotes2020.github.io/chirpy-demo/) or [wiki](https://github.com/cotes2020/jekyll-theme-chirpy/wiki). Note that the tutorial is based on the [latest release](https://github.com/cotes2020/jekyll-theme-chirpy/releases/latest), and the features of the default branch are usually ahead of the documentation.
 
-then running `bundle exec jekyll serve` for local deployment. Here is a [demo](https://github.com/BDHU/bdhu.github.io) using this theme.
+## Contributing
 
-An example `_config.yml` file can be found [here](https://github.com/BDHU/bdhu.github.io/blob/master/_config.yml). More info can be found at [Jekyll Remote Theme](https://github.com/benbalter/jekyll-remote-theme).
+Welcome to report bugs, improve code quality or submit a new feature. For more information, see [contributing guidelines](.github/CONTRIBUTING.md).
 
-## Customizing
+## Credits
 
-### Configuration variables
+This theme is mainly built with [Jekyll](https://jekyllrb.com/) ecosystem, [Bootstrap](https://getbootstrap.com/), [Font Awesome](https://fontawesome.com/) and some other wonderful tools (their copyright information can be found in the relevant files). The avatar and favicon design come from [Clipart Max](https://www.clipartmax.com/middle/m2i8b1m2K9Z5m2K9_ant-clipart-childrens-ant-cute/).
 
-Minimalist will respect the following variables, if set in your site's `_config.yml`:
+:tada: Thanks to all the volunteers who contributed to this project, their GitHub IDs are on [this list](https://github.com/cotes2020/jekyll-theme-chirpy/graphs/contributors). Also, I won't forget those guys who submitted the issues or unmerged PR because they reported bugs, shared ideas, or inspired me to write more readable documentation.
 
-```yml
-title: [The title of your site]
-description: [A short description of your site's purpose]
-```
+Last but not least, thank [JetBrains][jb] for providing the OSS development license.
 
-Additionally, you may choose to set the following optional variables:
+## Sponsoring
 
-```yml
-google_analytics: [Your Google Analytics tracking ID]
-```
+If you like it, please consider sponsoring me. It will help me to maintain this project better and I would be very grateful!
 
-Choose light, dark, or automatically adjusting theme based on system theme:
+[![Ko-fi](https://img.shields.io/badge/-Buy%20Me%20a%20Coffee-ff5f5f?logo=ko-fi&logoColor=white)](https://ko-fi.com/coteschung)
+[![Wechat Pay](https://img.shields.io/badge/-Tip%20Me%20on%20WeChat-brightgreen?logo=wechat&logoColor=white)][cn-donation]
+[![Alipay](https://img.shields.io/badge/-Tip%20Me%20on%20Alipay-blue?logo=alipay&logoColor=white)][cn-donation]
 
-```yml
-color-scheme: auto/light/dark
-```
+## License
 
-Specify logo for the website:
+This work is published under [MIT](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/LICENSE) License.
 
-```yml
-logo: /assets/img/<logo_file>
-```
+<!-- ReadMe links -->
 
-Enable favicon by putting a `favicon.ico` in the repo's root directory and add the following line in `config.yml`:
-
-```yml
-favicon: true
-```
-
-### Customizing Sidebar
-
-You can define a list of platforms that are linked from the sidebar in `_config.yml`:
-
-```yml
-sidebar:
-  - name: Google Scholar
-    icon: <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" style="vertical-align:-0.125em;" width="1em" height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5L12 0l12 9.5l-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14a7 7 0 0 0 0-14z" fill="currentColor"/></svg>
-    link: https://scholar.google.com/citations?user=zR6afi8AAAAJ
-  - name: GitHub
-    icon: <i class="fa-brands fa-github"></i>
-    link: https://github.com/BDHU
-  - ...
-```
-
-For further customization of the sidebar, go to [sidebar.html](https://github.com/BDHU/minimalist/blob/main/_includes/sidebar.html) in this repo and modify it however you like. The [link-mobile.html](https://github.com/BDHU/minimalist/blob/main/_includes/links-mobile.html) customizes the sidebar's look on mobile devices. This example uses fonts from [font awesome](https://fontawesome.com) and [Iconify](https://iconify.design/). Feel free to explore/find other sources.
-
-### Stylesheet
-
-If you'd like to add your own custom styles:
-
-1. Create a file called `/assets/css/style.scss` in your site
-2. Add the following content to the top of the file, exactly as shown:
-
-    ```scss
-    ---
-    ---
-
-    @import "{{ site.theme }}";
-    ```
-
-3. Add any custom CSS (or Sass, including imports) you'd like immediately after the `@import` line
-
-*Note: If you'd like to change the theme's Sass variables, you must set new values before the `@import` line in your stylesheet.*
-
-### Layouts
-
-If you'd like to change the theme's HTML layout:
-
-1. For some changes such as a custom `favicon`, you can add custom files in your local `_includes` folder. The files [provided with the theme](https://github.com/BDHU/minimalist/tree/master/_includes) provide a starting point and are included by the [original layout template](https://github.com/BDHU/minimalist/blob/master/_layouts/default.html).
-2. For more extensive changes, [copy the original template](https://github.com/BDHU/minimalist/blob/master/_layouts/default.html) from the theme's repository<br/>(*Pro-tip: click "raw" to make copying easier*)
-3. Create a file called `/_layouts/default.html` in your site
-4. Paste the default layout content copied in the first step
-5. Customize the layout as you'd like
-
-For example, this [repository](https://github.com/BDHU/bdhu.github.io) shows how customizations are made on the original theme.
-
-### Customizing Google Analytics code
-
-Google has released several iterations to their Google Analytics code over the years since this theme was first created. If you would like to take advantage of the latest code, paste it into `_includes/head-custom-google-analytics.html` in your Jekyll site.
-
-## Previewing the theme locally
-
-If you'd like to preview the theme locally (for example, in the process of proposing a change):
-
-1. Clone down the theme's repository (`git clone https://github.com/BDHU/minimalist`)
-2. `cd` into the theme's directory
-3. Run `script/bootstrap` to install the necessary dependencies
-4. Run `bundle exec jekyll serve` to start the preview server
-5. Visit [`localhost:4000`](http://localhost:4000) in your browser to preview the theme
-
-## Running tests
-
-The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run `script/cibuild`. You'll need to run `script/bootstrap` once before the test script will work.
-
-## Contributors
-
-Special thanks to [@godalming123](https://github.com/godalming123) for adding dark mode support. Also thank [@solvaholic](https://github.com/solvaholic), [@tildehacker](https://github.com/tildehacker), and other contributors for making multiple bug fixes and improvements. All contributions are welcome.
+[jb]: https://www.jetbrains.com/?from=jekyll-theme-chirpy
+[cn-donation]: https://sponsor.cotes.page/
